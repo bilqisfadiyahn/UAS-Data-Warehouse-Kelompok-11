@@ -233,43 +233,90 @@ Pembagian ini mensimulasikan proses pemuatan data secara berkala yang umum digun
 
 ## 5. Database Implementation & Performance Optimization (Supabase)
 
-Setelah proses ETL selesai dilakukan, data hasil staging diekspor ke format CSV dan dimuat ke dalam Supabase.
+Setelah proses ETL selesai dilakukan, data hasil staging diekspor ke format CSV dan dimuat ke dalam **Supabase**, yaitu platform cloud database yang menggunakan **PostgreSQL** sebagai database engine.
 
-### Loading Data
+Supabase berfungsi sebagai repositori utama Data Warehouse yang menyimpan seluruh tabel fakta dan dimensi hasil proses ETL.
 
-**Fact Table**
+### Loading Data ke Supabase
 
-- fact_sales
+#### Fact Table
 
-**Dimension Tables**
+- `fact_sales`
 
-- dim_customer
-- dim_product
-- dim_seller
-- dim_time
+#### Dimension Tables
 
-### Optimasi Database
+- `dim_customer`
+- `dim_product`
+- `dim_seller`
+- `dim_time`
 
-- Table Partitioning
-- Materialized View
-- B-Tree Indexing
-- Query Optimization
+Seluruh tabel diimplementasikan menggunakan pendekatan **Star Schema** untuk mendukung proses analisis multidimensi.
 
-### Benchmark
+---
 
-Pengujian menggunakan:
+### Table Partitioning
+
+Untuk meningkatkan performa query, tabel fakta `fact_sales` dipartisi berdasarkan atribut **year**.
+
+Partisi yang digunakan:
+
+- `fact_sales_2016_2017`
+- `fact_sales_2018`
+
+Strategi ini memungkinkan PostgreSQL menerapkan **Partition Pruning**, sehingga hanya partisi yang relevan yang dipindai saat query dijalankan.
+
+---
+
+### Materialized View
+
+Dibuat materialized view:
+
+`mv_ringkasan_penjualan`
+
+yang menyimpan hasil agregasi penting seperti:
+
+- Total transaksi
+- Total pendapatan
+- Rata-rata review pelanggan
+
+Materialized View digunakan untuk mempercepat proses analisis dan visualisasi dashboard.
+
+---
+
+### B-Tree Indexing
+
+Index B-Tree diterapkan pada kolom foreign key untuk:
+
+- Mempercepat pencarian data
+- Mempercepat proses join
+- Mengurangi full table scan
+- Meningkatkan performa query
+
+---
+
+### Query Optimization & Benchmarking
+
+Pengujian performa dilakukan menggunakan:
 
 ```sql
 EXPLAIN ANALYZE
 ```
 
-Hasil benchmark menunjukkan waktu eksekusi query rata-rata:
+Strategi optimasi yang diterapkan meliputi:
+
+- Table Partitioning
+- B-Tree Indexing
+- Materialized View
+
+Hasil benchmark menunjukkan bahwa query dapat dijalankan dengan waktu respons rata-rata sekitar:
 
 | Kondisi | Waktu Eksekusi |
 |----------|----------------|
-| Setelah Optimasi | 0.05 – 0.06 ms |
+| Setelah Optimasi | **0.05 – 0.06 ms** |
 
 ---
+
+Tahap ini memastikan bahwa Data Warehouse memiliki performa yang optimal untuk mendukung proses analisis multidimensi dan visualisasi dashboard secara efisien.
 
 ## 6. Data Presentation & OLAP (Atoti)
 
