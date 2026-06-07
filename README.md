@@ -148,7 +148,7 @@ Seluruh tabel digabungkan menggunakan proses join untuk membentuk tabel staging 
 
 ### Fact Table
 
-### `fact_sales`
+`fact_sales`
 
 Berisi:
 
