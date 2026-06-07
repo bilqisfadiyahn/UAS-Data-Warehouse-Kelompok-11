@@ -1,24 +1,24 @@
-# 🛒 Proyek Data Warehouse: Perancangan Gudang Data dan Analisis Multidimensi Performa Bisnis E-Commerce Olist Brazil Menggunakan Star Schema dan Atoti OLAP Cube
+# Proyek Data Warehouse: Perancangan Gudang Data dan Analisis Multidimensi Performa Bisnis E-Commerce Olist Brazil Menggunakan Star Schema dan Atoti OLAP Cube
 
-## 📖 Deskripsi Proyek
+## Deskripsi Proyek
 
-Proyek ini merupakan implementasi arsitektur **Data Warehouse** menggunakan pendekatan **Star Schema** dengan memanfaatkan **Brazilian E-Commerce Public Dataset by Olist** sebagai sumber data.
+Proyek ini merupakan implementasi arsitektur **Data Warehouse** menggunakan pendekatan **Star Schema** menggunakan dataset **Brazilian E-Commerce Public Dataset by Olist**.
 
 Sistem dibangun menggunakan **Supabase (PostgreSQL)** sebagai repositori data terpusat dan **Atoti** sebagai platform analisis multidimensi (OLAP). Proyek ini mensimulasikan proses Data Warehouse mulai dari **Data Staging (ETL)**, **Periodic Loading**, **Database Optimization**, hingga **OLAP Dashboard & Business Intelligence**.
 
 ---
 
-## 👥 Penyusun
+## Penyusun
 
-Proyek ini disusun oleh **Kelompok 11** sebagai bagian dari tugas mata kuliah Data Warehouse.
+Proyek ini disusun oleh **Kelompok 11** sebagai bagian dari tugas mata kuliah Data Warehouse dan beranggotakan:
 
-- Ruthtatia Grace Astridia (24031554072)
-- Bilqis Fadiyah Nisrina (24031554216)
-- Frelin Theresia Pania (24031554220)
+1. Ruthtatia Grace Astridia (24031554072)
+2. Bilqis Fadiyah Nisrina (24031554216)
+3. Frelin Theresia Pania (24031554220)
 
 ---
 
-## 💾 Dataset
+## Dataset
 
 Dataset yang digunakan adalah **Brazilian E-Commerce Public Dataset by Olist**. Dataset ini berisi data transaksi e-commerce di Brasil selama periode tahun 2016–2018 yang mencakup informasi:
 
@@ -32,13 +32,13 @@ Dataset yang digunakan adalah **Brazilian E-Commerce Public Dataset by Olist**. 
 * Geolocation Data (lokasi pelanggan dan penjual)
 * Product Category Translation Data (terjemahan kategori produk)
 
-🔗 **Link Sumber Dataset:** [Kaggle Olist Dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
+**Link Sumber Dataset:** [Kaggle Olist Dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
 
 > ⚠️ **Catatan Penting:** Folder `Raw Data` (data mentah asli dari Kaggle) tidak di-upload ke dalam repository GitHub ini karena ukuran filenya yang terlalu besar. Jika ingin menjalankan ulang proses dari awal, silakan unduh dataset melalui link Kaggle di atas dan masukkan ke dalam folder lokal bernama `Raw Data/`.
 
 ---
 
-## 📂 Struktur Folder Repository
+## Struktur Folder Repository
 
 * `Code/` : Berisi script Python / Jupyter Notebook untuk proses ETL dan pembuatan Atoti OLAP Cube.
 * `Dataset/` : Berisi file data bersih hasil staging yang digunakan untuk pemodelan.
@@ -47,7 +47,7 @@ Dataset yang digunakan adalah **Brazilian E-Commerce Public Dataset by Olist**. 
 
 ---
 
-## 🏗️ Arsitektur Data Warehouse
+## Arsitektur Data Warehouse
 
 ```text
 Raw Dataset
@@ -77,13 +77,13 @@ Dashboard & Business Insight
 
 ---
 
-# ⚙️ Data Pipeline
+# Data Pipeline
 
 ## 1. Data Staging (ETL)
 
 Tahap ETL dilakukan menggunakan Python dan Pandas untuk menyiapkan data sebelum dimuat ke dalam Data Warehouse.
 
-### 🔹 Data Profiling
+### Data Profiling
 
 Pemeriksaan dilakukan terhadap:
 
@@ -96,32 +96,32 @@ Pemeriksaan dilakukan terhadap:
 - Imbalance ratio
 - Sebaran outlier
 
-### 🔹 Hasil Validasi
+### Hasil Validasi
 
 - Tidak ditemukan duplikasi pada `customer_id`
 - Tidak ditemukan duplikasi pada `order_id`
 - Tidak ditemukan order tanpa customer
 - Relasi antar tabel valid untuk proses integrasi
 
-### 🔹 Data Cleaning
+### Data Cleaning
 
 #### Penanganan Missing Value
 
 **Tabel Products**
 
 - Missing value numerik diisi menggunakan median
-- `product_category_name` diisi dengan `"Unknown Category"`
+- `product_category_name` yang kosong diisi dengan `"Unknown Category"`
 
 **Tabel Reviews**
 
-- `review_comment_title` diisi dengan `"No Title"`
-- `review_comment_message` diisi dengan `"No Review"`
+- `review_comment_title` yang kosong diisi dengan `"No Title"`
+- `review_comment_message` yang kosong diisi dengan `"No Review"`
 
-### 🔹 Transformasi Datetime
+### Transformasi Datetime
 
 Kolom tanggal pada tabel Orders dan Reviews dikonversi ke format datetime untuk mendukung analisis berbasis waktu.
 
-### 🔹 Feature Engineering
+### Feature Engineering
 
 Dibuat atribut waktu tambahan:
 
@@ -133,7 +133,7 @@ Dibuat atribut waktu tambahan:
 
 Atribut ini digunakan untuk mendukung analisis hierarki waktu.
 
-### 🔹 Integrasi Data
+### Integrasi Data
 
 Seluruh tabel digabungkan menggunakan proses join untuk membentuk tabel staging terintegrasi.
 
@@ -195,7 +195,7 @@ Untuk mendukung dashboard analitik, dibuat dataset tambahan berbasis seller mela
 
 Dataset ini digunakan untuk analisis:
 
-### 📌 Seller Performa Terbaik
+### Seller Performa Terbaik
 
 Menghasilkan informasi seperti:
 
@@ -204,7 +204,7 @@ Menghasilkan informasi seperti:
 - total pendapatan
 - rata-rata rating pelanggan
 
-### 📌 Seller Berdasarkan Wilayah
+### Seller Berdasarkan Wilayah
 
 Menghasilkan informasi seperti:
 
@@ -294,7 +294,7 @@ Dashboard yang dihasilkan mencakup analisis seperti:
 
 ---
 
-# 📚 Konsep yang Diimplementasikan
+# Konsep yang Diimplementasikan
 
 - Data Warehouse
 - ETL (Extract, Transform, Load)
