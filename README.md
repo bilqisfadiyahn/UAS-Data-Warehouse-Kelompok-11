@@ -22,15 +22,15 @@ Proyek ini disusun oleh **Kelompok 11** sebagai bagian dari tugas mata kuliah Da
 
 Dataset yang digunakan adalah **Brazilian E-Commerce Public Dataset by Olist**. Dataset ini berisi data transaksi e-commerce di Brasil selama periode tahun 2016–2018 yang mencakup informasi:
 
-* *Customer Data* (informasi pelanggan)
-* *Order Data* (informasi pesanan)
-* *Order Items Data* (detail produk pada setiap pesanan)
-* *Product Data* (informasi produk)
-* *Seller Data* (informasi penjual)
-* *Payment Data* (informasi pembayaran)
-* *Review Data* (ulasan dan rating pelanggan)
-* *Geolocation Data* (lokasi pelanggan dan penjual)
-* *Product Category Translation Data* (terjemahan kategori produk)
+* Customer Data (informasi pelanggan)
+* Order Data (informasi pesanan)
+* Order Items Data (detail produk pada setiap pesanan)
+* Product Data (informasi produk)
+* Seller Data (informasi penjual)
+* Payment Data (informasi pembayaran)
+* Review Data (ulasan dan rating pelanggan)
+* Geolocation Data (lokasi pelanggan dan penjual)
+* Product Category Translation Data (terjemahan kategori produk)
 
 🔗 **Link Sumber Dataset:** [Kaggle Olist Dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
 
@@ -165,21 +165,21 @@ Berisi:
 
 ### Dimension Tables
 
-### `dim_customer`
+`dim_customer`
 
 - customer_id
 - customer_city
 - customer_state
 
-### `dim_product`
+`dim_product`
 
 Berisi informasi produk.
 
-### `dim_seller`
+`dim_seller`
 
 Berisi informasi penjual.
 
-### `dim_time`
+`dim_time`
 
 - date
 - year
