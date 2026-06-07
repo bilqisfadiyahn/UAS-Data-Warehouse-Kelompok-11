@@ -103,6 +103,8 @@ Pemeriksaan dilakukan terhadap:
 - Tidak ditemukan order tanpa customer
 - Relasi antar tabel valid untuk proses integrasi
 
+---
+
 ### Data Cleaning
 
 #### Penanganan Missing Value
@@ -121,6 +123,8 @@ Pemeriksaan dilakukan terhadap:
 
 Kolom tanggal pada tabel Orders dan Reviews dikonversi ke format datetime untuk mendukung analisis berbasis waktu.
 
+---
+
 ### Feature Engineering
 
 Dibuat atribut waktu tambahan:
@@ -132,6 +136,8 @@ Dibuat atribut waktu tambahan:
 - date
 
 Atribut ini digunakan untuk mendukung analisis hierarki waktu.
+
+---
 
 ### Integrasi Data
 
