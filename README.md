@@ -64,8 +64,8 @@ Periodic Load
      ▼
 Supabase PostgreSQL
      │
- ┌───┼─────────┐
- ▼   ▼         ▼
+     ├──────────┬──────────┐
+     ▼          ▼          ▼
 Partitioning  Indexing  Materialized View
      │
      ▼
